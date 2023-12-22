@@ -1,0 +1,8 @@
+#N canvas 245 245 2736 1660 12;
+#X obj 149 77 notein 1;
+#X obj 147 166 Instrument;
+#X obj 146 262 dac~;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;

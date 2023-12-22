@@ -1,0 +1,12 @@
+#N canvas 49 49 2736 1660 12;
+#X obj 272 209 osc~ 400;
+#X obj 304 320 dac~;
+#X floatatom 262 135 5 0 0 0 - freq - 0;
+#X obj 654 154 loadbang;
+#X msg 687 200 \; freq 400 \;;
+#X obj 758 160 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 0 0;
+#X connect 3 0 4 0;
+#X connect 5 0 4 0;

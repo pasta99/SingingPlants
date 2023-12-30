@@ -3,7 +3,7 @@ using System.Collections.Generic;
 // using System.Numerics;
 using UnityEngine;
 
-public class LightManager : MonoBehaviour
+public class LightManagerOld : MonoBehaviour
 {
     // public RenderTexture background;
     // public ComputeShader compute;

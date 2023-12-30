@@ -7,6 +7,12 @@ public class PlantMover : MonoBehaviour
 
     private GameObject draggedObject; 
 
+    private LightManager lightManager;
+
+    void Start() {
+        lightManager = GameObject.Find("Controller").GetComponent<LightManager>();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,6 +38,13 @@ public class PlantMover : MonoBehaviour
             draggedObject = hit.collider.gameObject;
             isDragging = true;
             lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (draggedObject.name == "Light(Clone)") {
+                Light l = draggedObject.GetComponent<Light>();
+                if (l != null) {
+                    lightManager.SelectLight(draggedObject);
+                }
+            }
         }
     }
 

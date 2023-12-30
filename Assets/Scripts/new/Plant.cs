@@ -10,6 +10,8 @@ public class Plant : MonoBehaviour
     public float temperatureLevel = 0;
 
     public float optimalLightLevel = 0.5f; 
+    public float optimalMoistureLevel = 0.5f;
+    public float optimalTemperatureLevel = 0.5f; 
 
     private MidiInstrument instrument; 
     private Actuator actuator; 
@@ -23,12 +25,11 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        instrument.SetVolume(lightLevel);
-        instrument.SetMoistureScore(moistureLevel);
-        instrument.SetTemperatureScore(temperatureLevel);
+        instrument.SetVolume(GetLightScore());
+        instrument.SetMoistureScore(GetMoistureScore());
+        instrument.SetTemperatureScore(GetTemperatureScore());
 
-        Debug.Log($"Level {lightLevel}");
-        Debug.Log(GetLightScore());
+        UseWater(0.03f * Time.deltaTime);
     }
 
     private float ScoreFunction(float x) {
@@ -44,6 +45,16 @@ public class Plant : MonoBehaviour
         return ScoreFunction(x); 
     }
 
+    public float GetMoistureScore() {
+        float x = moistureLevel - optimalMoistureLevel;
+        return ScoreFunction(x);
+    }
+
+    public float GetTemperatureScore() {
+        float x = temperatureLevel - optimalTemperatureLevel;
+        return ScoreFunction(x);
+    }
+ 
     public void NoteOn(int note, int velocity) {
         instrument.NoteOn(note, velocity);
     }
@@ -54,5 +65,18 @@ public class Plant : MonoBehaviour
     public void SetLightLevel(float lightLevel){
         this.lightLevel = lightLevel;
         actuator.SetLightLevel(lightLevel);
+    }
+    public void SetHeatLevel(float heatLevel){
+        this.temperatureLevel = heatLevel;
+        actuator.SetHeatLevel(temperatureLevel);
+    }
+    private void UseWater(float amount) {
+        AddWater(-amount);
+    }
+
+    public void AddWater(float amount) {
+        moistureLevel += amount; 
+        moistureLevel = Mathf.Max(0, moistureLevel);
+        actuator.SetMoistureLevel(moistureLevel);
     }
 }

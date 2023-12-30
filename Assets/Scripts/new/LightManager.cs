@@ -20,7 +20,7 @@ public class LightManager : MonoBehaviour
     }
 
     public void AddLight() {
-        GameObject go = Instantiate(lightPrefab);
+        GameObject go = Instantiate(lightPrefab, new Vector3(0, 0, 1), Quaternion.identity);
         lights.Add(go);
     }
 
@@ -30,11 +30,14 @@ public class LightManager : MonoBehaviour
     }
 
     public void SelectLight(GameObject light) {
-        Debug.Log("Selected light");
+        UnselectAll();
+        light.GetComponent<Light>().Select(true);
+    }
+
+    public void UnselectAll() {
         foreach (GameObject go in lights) {
             go.GetComponent<Light>().Select(false);
         }
-        light.GetComponent<Light>().Select(true);
     }
 
     public float GetLightLevel(Vector2 position) {

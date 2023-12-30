@@ -1,5 +1,10 @@
 Shader "Custom/Test"
 {
+    Properties
+    {
+        // Change this value in the Material Inspector to affect the value of the Offset command
+        _Color ("Color", Color) = (1, 1, 1, 1)
+    }
     SubShader
     {
         Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
@@ -27,13 +32,15 @@ Shader "Custom/Test"
                 return o;
             }
 
+            fixed4 _Color;
+
             fixed4 frag (v2f i) : SV_Target
             {
                 float2 center = fixed2(0.5, 0.5);
                 float2 norm = i.uv - center;
                 float dist = length(norm);
                 float opacity = max(1 - (2 * dist), 0);
-                return fixed4(1, 1, 1, opacity);
+                return fixed4(_Color.xyz, opacity);
             }
             ENDCG
         }

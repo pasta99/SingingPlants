@@ -5,11 +5,13 @@ using UnityEngine;
 public class Sensor : MonoBehaviour
 {
     LightManager lightManager;
+    HeatManager heatManager; 
     Plant plant;
     // Start is called before the first frame update
     void Start()
     {
         lightManager = GameObject.Find("Controller").GetComponent<LightManager>();
+        heatManager = GameObject.Find("Controller").GetComponent<HeatManager>();
         plant = transform.GetComponent<Plant>();
     }
 
@@ -17,6 +19,8 @@ public class Sensor : MonoBehaviour
     void Update()
     {
         float light = lightManager.GetLightLevel(new Vector2(transform.position.x, transform.position.y));
+        float heat = heatManager.GetHeatLevel(new Vector2(transform.position.x, transform.position.y));
         plant.SetLightLevel(light);
+        plant.SetHeatLevel(heat);
     }
 }

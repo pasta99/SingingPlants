@@ -8,9 +8,11 @@ public class PlantMover : MonoBehaviour
     private GameObject draggedObject; 
 
     private LightManager lightManager;
+    private HeatManager heatManager;
 
     void Start() {
         lightManager = GameObject.Find("Controller").GetComponent<LightManager>();
+        heatManager = GameObject.Find("Controller").GetComponent<HeatManager>();
     }
 
     void Update()
@@ -43,6 +45,15 @@ public class PlantMover : MonoBehaviour
                 Light l = draggedObject.GetComponent<Light>();
                 if (l != null) {
                     lightManager.SelectLight(draggedObject);
+                    heatManager.UnselectAll();
+                }
+            }
+
+            if (draggedObject.name == "Heat(Clone)") {
+                Heat l = draggedObject.GetComponent<Heat>();
+                if (l != null) {
+                    heatManager.SelectHeat(draggedObject);
+                    lightManager.UnselectAll();
                 }
             }
         }

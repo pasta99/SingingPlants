@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using Melanchall.DryWetMidi.Common;
@@ -12,7 +12,6 @@ using UnityEngine;
 public class DemoScript : MonoBehaviour
 {
     private const string OutputDeviceName = "Microsoft GS Wavetable Synth";
-    // private const string OutputDeviceName = "Microsoft MIDI Mapper";
 
     private OutputDevice _outputDevice;
     private Playback _playback;
@@ -21,7 +20,6 @@ public class DemoScript : MonoBehaviour
     {
         InitializeOutputDevice();
         var midiFile = CreateTestFile();
-        var t = midiFile.GetTempoMap();
         InitializeFilePlayback(midiFile);
         StartPlayback();
     }

@@ -1,8 +1,10 @@
-#N canvas 245 245 2736 1660 12;
-#X obj 147 166 Instrument;
-#X obj 146 262 dac~;
+#N canvas 0 0 1924 1030 12;
 #X obj 149 77 notein 3;
+#X obj 147 186 Trumpet;
+#X obj 140 294 Distortion;
+#X obj 135 378 dac~;
 #X connect 0 0 1 0;
-#X connect 0 0 1 1;
-#X connect 2 0 0 0;
-#X connect 2 1 0 1;
+#X connect 0 1 2 1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 3 1;

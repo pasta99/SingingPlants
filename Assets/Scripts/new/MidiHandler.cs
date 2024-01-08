@@ -31,6 +31,7 @@ public class MidiHandler : MonoBehaviour, IOutputDevice
     {
         if (midiEvent is NoteOnEvent noteOnEvent)
         {
+            // Debug.Log(instruments[5]);
             instruments[noteOnEvent.Channel].NoteOn(noteOnEvent.NoteNumber, noteOnEvent.Velocity);
         }
         if (midiEvent is NoteOffEvent noteOffEvent) 

@@ -29,6 +29,19 @@ public class PlantMover : MonoBehaviour
         {
             HandleMouseUp();
         }
+
+        if (Input.GetMouseButton(1)) {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                Plant plant = hit.collider.gameObject.GetComponent<Plant>();
+                if (plant != null) {
+                    plant.OpenInfo();
+                }
+            
+            }
+        }
     }
 
     private void HandleMouseDown()

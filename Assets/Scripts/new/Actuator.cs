@@ -13,11 +13,20 @@ public class Actuator : MonoBehaviour
     private float moistureLevel; 
     private float heatLevel; 
     float currentBrightness; 
+
+    bool setup = false; 
     
     // Start is called before the first frame update
     void Start()
     {
+        if (!setup) {
+            Setup();
+        }
+    }
+
+    void Setup() {
         spriteRenderer = transform.GetComponent<SpriteRenderer>();
+        setup = true;
     }
 
     public void SetLightLevel(float lightLevel) {
@@ -34,6 +43,9 @@ public class Actuator : MonoBehaviour
         SetColor();
     }
     private void SetColor() {
+        if (!setup) {
+            Setup();
+        }
         Color hC = Color.Lerp(Color.white, heatColor, heatLevel);
         Color mC = Color.Lerp(Color.white, moistureColor, moistureLevel);
 

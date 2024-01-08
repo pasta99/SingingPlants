@@ -24,7 +24,7 @@ public class WateringCan : MonoBehaviour
                     GameObject hitObject = hit.collider.gameObject;
                     Plant plant = hitObject.GetComponent<Plant>();
                     if (plant != null) {
-                        plant.AddWater(0.1f);
+                        plant.AddWater(0.05f);
                     }
                 }
             }

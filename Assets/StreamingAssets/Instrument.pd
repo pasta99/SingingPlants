@@ -1,6 +1,6 @@
-#N canvas 196 196 2736 1660 12;
-#X obj 157 163 mtof;
-#X obj 156 234 osc~;
+#N canvas 0 0 1924 1030 12;
+#X obj 128 139 mtof;
+#X obj 124 185 osc~;
 #X floatatom 292 579 5 0 0 0 - - - 0;
 #X obj 254 645 *~;
 #X obj 159 76 inlet;

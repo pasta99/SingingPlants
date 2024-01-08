@@ -1,8 +1,10 @@
-#N canvas 245 245 2736 1660 12;
-#X obj 147 166 Instrument;
-#X obj 146 262 dac~;
-#X obj 149 77 notein 5;
+#N canvas 0 0 1924 1030 12;
+#X obj 138 295 Distortion;
+#X obj 133 379 dac~;
+#X obj 147 78 notein 5;
+#X obj 137 187 Clarinet;
 #X connect 0 0 1 0;
 #X connect 0 0 1 1;
-#X connect 2 0 0 0;
+#X connect 2 0 3 0;
 #X connect 2 1 0 1;
+#X connect 3 0 0 0;

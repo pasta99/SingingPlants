@@ -17,7 +17,7 @@ public class Light : MonoBehaviour
     {
         if (selected) {
             float changeSize = Input.GetAxis("Mouse ScrollWheel");
-            radius += changeSize * Time.deltaTime * 100; 
+            radius += changeSize * Time.deltaTime * 500; 
             radius = Mathf.Max(1, radius);
         }
         transform.localScale = new Vector3(radius, radius, 1);

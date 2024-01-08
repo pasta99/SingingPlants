@@ -9,7 +9,7 @@ public class MidiInstrument : MonoBehaviour
     public float maxVolume = 0.2f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         pd = transform.GetComponent<LibPdInstance>();
     }
@@ -27,10 +27,10 @@ public class MidiInstrument : MonoBehaviour
     }
 
     public void SetMoistureScore(float moisture) {
-        pd.SendFloat("moisture", moisture);
+        pd.SendFloat("moisture", 1 - moisture);
     }
 
     public void SetTemperatureScore(float temperature) {
-        pd.SendFloat("temperature", temperature);
+        pd.SendFloat("temperature", 1 - temperature);
     }
 }

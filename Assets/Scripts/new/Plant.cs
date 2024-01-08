@@ -40,7 +40,7 @@ public class Plant : MonoBehaviour
         instrument.SetMoistureScore(GetMoistureScore());
         instrument.SetTemperatureScore(GetTemperatureScore());
 
-        UseWater(0.01f * Time.deltaTime);
+        UseWater(0.005f * Time.deltaTime);
         gameObject.transform.localScale = size;
     }
 
